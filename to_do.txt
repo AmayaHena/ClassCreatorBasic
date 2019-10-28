@@ -1,19 +1,23 @@
 General
+- clean code
+- enum for string comp
+- std::file system
+- state for create (Writer)
+- vector to stack
 - optimization
 - babytrotter
-- target include directories (classcreator PUBLIC inc)
 
 Core
 - method for setter and create
 
+Writer
+- make everything clean
+
 File
-- dynamic path ?
+- make everythign clean
 
 Parser
 - make everythign clean
-
-Writer
-- make everything clean
 
 Doc
 - write a real doc
