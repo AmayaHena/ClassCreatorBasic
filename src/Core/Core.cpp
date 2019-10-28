@@ -125,8 +125,8 @@ bool Core::generateSubFiles()
 
 bool Core::generateFolderFiles()
 {
-    _d.createInc(_p.getProjectName());
-    _d.createSrc(_p.getProjectName());
+    _d.createDir(_p.getProjectName(), "inc");
+    _d.createDir(_p.getProjectName(), "src");
     _w.setFile(_f.getFileHpp());
     _w.create(_p.getProjectName(), _p.getProjectName() + "/inc", ".hpp");
     _w.setFile(_f.getFileCpp());

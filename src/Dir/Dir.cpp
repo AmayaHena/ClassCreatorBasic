@@ -30,13 +30,3 @@ bool Dir::createDir(const std::string path, const std::string name)
     std::cout << "Created dir : " << s << std::endl;
     return true;
 }
-
-bool Dir::createInc(const std::string path)
-{
-    return (Dir::createDir(path, "inc"));
-}
-
-bool Dir::createSrc(const std::string path)
-{
-    return (Dir::createDir(path, "src"));
-}
