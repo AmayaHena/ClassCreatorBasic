@@ -24,7 +24,7 @@ class File {
 		/* Load Config public */
 		bool loadConfig(bool main, bool make, bool cmake);
 
-		/* Setters */
+		/* Getters */
 		std::vector<std::string> getMain(void);
 		std::vector<std::string> getFileCpp(void);
 		std::vector<std::string> getFileHpp(void);
@@ -42,7 +42,7 @@ class File {
 		std::vector<std::string> loadFileToV(std::string path);
 		bool checkLoadConfig(bool main, bool make, bool cmake);
 
-		/* Getters */
+		/* Setters */
 		void setMain(const std::vector<std::string> v);
 		void setFileCpp(const std::vector<std::string> v);
 		void setFileHpp(const std::vector<std::string> v);
