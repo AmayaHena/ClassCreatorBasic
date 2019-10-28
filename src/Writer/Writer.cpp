@@ -255,6 +255,7 @@ void Writer::processTag(const std::string s, const std::string name, const std::
     }
     for (unsigned int pos = i; pos < s.length(); pos++)
         _of << s[pos];
+    _of << std::endl;
 }
 
 bool Writer::create(const std::string name, const std::string path, const std::string type)
@@ -265,8 +266,7 @@ bool Writer::create(const std::string name, const std::string path, const std::s
         if (Writer::findTag(_file[i], _tag_ref) == true)
             Writer::processTag(_file[i], name, path, type);
         else
-            _of << _file[i];
-        _of << std::endl;
+            _of << _file[i] << std::endl;
     }
     Writer::cleanRessources();
     return true;
