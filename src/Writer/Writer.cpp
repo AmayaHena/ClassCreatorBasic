@@ -16,6 +16,28 @@
 
 Writer::Writer() : _tag_ref("/*#!")
 {
+    _type[".hpp"] = HPP;
+    _type[".cpp"] = CPP;
+    _type["main"] = MAIN;
+    _type["Makefile"] = MAKE;
+    _type["CMake"] = CMAKE;
+
+    _tagMake["ProgramName"] = PROGNAME;
+    _tagMake["SrcMakefile"] = SRCMAKE;
+    _tagMake["SrcCMake"] = SRCCMAKE;
+    _tagMake["IncCMake"] = INCCMAKE;
+
+    _tagHPP["FileName"] = FILENAME;
+    _tagHPP["ContructorMethod"] = CONSTRUCTOR;
+    _tagHPP["DestructorMethod"] = DESTRUCTOR;
+    _tagHPP["IncludeInheritanceHpp"] = INCINH;
+    _tagHPP["InheritanceHpp"] = INHHPP;
+
+    _tagCPP["IncludeMain"] = INCMAIN;
+    _tagCPP["IncludeCpp"] = INCCPP;
+    _tagCPP["InheritanceCpp"] = INHCPP;
+    _tagCPP["ConstructorCpp"] = CONSTRUCTORCPP;
+    _tagCPP["DestructorCpp"] = DESTRUCTORCPP;
 }
 
 void Writer::setHeader(std::vector<std::string> v)
@@ -97,14 +119,23 @@ std::ofstream Writer::createFileG(const std::string name, const std::string path
 {
     std::string s;
 
-    if (type == ".hpp" || type == ".cpp")
-        s = path + "/" + name + type;
-    else if (type == "main")
-        s = path + "/main.cpp";
-    else if (type == "Makefile")
-        s = path + "/Makefile";
-    else if (type == "CMake")
-        s = path + "/CMakeLists.txt";
+    switch (_type[type]) {
+        case HPP:
+            s = path + "/" + name + type;
+            break;
+        case CPP:
+            s = path + "/" + name + type;
+            break;
+        case MAIN:
+            s = path + "/main.cpp";
+            break;
+        case MAKE:
+            s = path + "/Makefile";
+            break;
+        case CMAKE:
+            s = path + "/CMakeLists.txt";
+            break;
+    }
     std::ofstream file(s);
     std::cout << "File " << path << '/' << name << " created" << std::endl;
     return file;
@@ -118,65 +149,64 @@ void Writer::writeVectorInFile(const std::string s1, const std::vector<std::stri
 
 void Writer::useTagCpp(const std::string tag, const std::string name)
 {
-    if (tag == "IncludeMain") {
-        Writer::writeVectorInFile("#include \"", _inc, "\"");
-        return;
-    } if (tag == "IncludeCpp") {
-        _of << "#include \"" << _include << "\"";
-        return;
-    } if (tag == "ConstructorCpp") {
-        _of << name << "::" << name << "()";
-        return;
-    } if (!_inheritance.empty() && tag == "InheritanceCpp") {
-        _of << " : " << _inheritance << "()";
-        return;
-    } if (tag == "DestructorCpp") {
-        _of << name << "::~" << name << "()";
-        return;
+    switch (_tagCPP[tag]) {
+        case INCMAIN :
+            Writer::writeVectorInFile("#include \"", _inc, "\"");
+            return;
+        case INCCPP :
+            _of << "#include \"" << _include << "\"";
+            return;
+        case INHCPP :
+            if (!_inheritance.empty())
+                _of << " : " << _inheritance << "()";
+            return;
+        case CONSTRUCTORCPP :
+            _of << name << "::" << name << "()";
+            return;
+        case DESTRUCTORCPP :
+            _of << name << "::~" << name << "()";
+            return;
     }
 }
 
 void Writer::useTagHpp(const std::string tag, const std::string name)
 {
-    if (tag == "FileName") {
-        _of << name;
-        return;
-    }
-    if (tag == "IncludeInheritanceHpp" && _include.length() > 0) {
-        _of << "#include \"" << _include << "\"";
-        return;
-    }
-    if (!_inheritance.empty() && tag == "InheritanceHpp") {
-        _of << " : public " << _inheritance;
-        return;
-    }
-    if (tag == "ContructorMethod") {
-        _of << name << "();";
-        return;
-    }
-    if (tag == "DestructorMethod") {
-        _of << "~" << name << "();";
-        return;
+    switch (_tagHPP[tag]) {
+        case FILENAME :
+            _of << name;
+            return;
+        case CONSTRUCTOR :
+            _of << name << "();";
+            return;
+        case DESTRUCTOR :
+            _of << "~" << name << "();";
+            return;
+        case INCINH :
+            if (!_include.empty())
+                _of << "#include \"" << _include << "\"";
+            return;
+        case INHHPP :
+            if (!_inheritance.empty())
+                _of << " : public " << _inheritance;
+            return;
     }
 }
 
 void Writer::useTagMake(const std::string tag, const std::string path)
 {
-    if (tag == "ProgramName") {
-        _of << path;
-        return;
-    }
-    if (tag == "SrcMakefile") {
-        Writer::writeVectorInFile("\t\t", _src, "\t\\");
-        return;
-    }
-    if (tag == "SrcCMake") {
-        Writer::writeVectorInFile("\t", _src, "");
-        return;
-    }
-    if (tag == "IncCMake") {
-        Writer::writeVectorInFile("\t", _inc, "");
-        return;
+    switch (_tagMake[tag]) {
+        case PROGNAME :
+            _of << path;
+            return;
+        case SRCMAKE :
+            Writer::writeVectorInFile("\t\t", _src, "\t\\");
+            return;
+        case SRCCMAKE :
+            Writer::writeVectorInFile("\t", _src, "");
+            return;
+        case INCCMAKE :
+            Writer::writeVectorInFile("\t", _inc, "");
+            return;
     }
 }
 
@@ -185,15 +215,23 @@ void Writer::useTag(const std::string tag, const std::string name, const std::st
     if (tag == "Header") {
         Writer::writeVectorInFile("", _header, "");
         return;
-    } if (type == ".hpp") {
-        Writer::useTagHpp(tag, name);
-        return;
-    } if (type == ".cpp" || type == "main") {
-        Writer::useTagCpp(tag, name);
-        return;
-    } if (type == "Makefile" || type == "CMake") {
-        Writer::useTagMake(tag, path);
-        return;
+    }
+    switch (_type[type]) {
+        case HPP :
+            Writer::useTagHpp(tag, name);
+            return;
+        case CPP :
+            Writer::useTagCpp(tag, name);
+            return;
+        case MAIN :
+            Writer::useTagCpp(tag, name);
+            return;
+        case MAKE :
+            Writer::useTagMake(tag, path);
+            return;
+        case CMAKE :
+            Writer::useTagMake(tag, path);
+            return;
     }
 }
 

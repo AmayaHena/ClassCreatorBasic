@@ -11,6 +11,7 @@
 /* STD Library */
 #include <iostream>
 #include <vector>
+#include <map>
 
 class Writer {
 
@@ -52,6 +53,18 @@ class Writer {
 		/* Getters */
 		std::vector<std::string> getHeader(void);
 		std::vector<std::string> getFile(void);
+
+		/* enum for maps */
+		enum type {HPP, CPP, MAIN, MAKE, CMAKE};
+		enum tagMake {PROGNAME, SRCMAKE, SRCCMAKE, INCCMAKE};
+		enum tagHPP {FILENAME, CONSTRUCTOR, DESTRUCTOR, INCINH, INHHPP};
+		enum tagCPP {INCMAIN, INCCPP, INHCPP, CONSTRUCTORCPP, DESTRUCTORCPP};
+
+		/* Variables - Ressource for string switch */
+		std::map<std::string, type> _type;
+		std::map<std::string, tagMake> _tagMake;
+		std::map<std::string, tagHPP> _tagHPP;
+		std::map<std::string, tagCPP> _tagCPP;
 
 		/* Variables - Ressources for files writing */
 		std::vector<std::string> _header;
