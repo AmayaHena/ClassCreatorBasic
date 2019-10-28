@@ -92,15 +92,12 @@ bool Parser::helperCommand()
     return false;
 }
 
-bool Parser::AVOptions(std::string s, bool tmp)
+void Parser::AVOptions(std::string s)
 {
     for (int i = 1; s[i]; i++) {
         switch (s[i]) {
             case 'm' :
                 Parser::setMain(true);
-                break;
-            case 'f' :
-                tmp = true;
                 break;
             case 'i' :
                 Parser::setInheritance(true);
@@ -116,7 +113,6 @@ bool Parser::AVOptions(std::string s, bool tmp)
                 break;
         }
     }
-    return tmp;
 }
 
 bool Parser::parsingAV(std::vector<std::string> v)
@@ -126,10 +122,9 @@ bool Parser::parsingAV(std::vector<std::string> v)
     if (v[0] == "-h")
         return Parser::helperCommand();
     Parser::setProjectName(v[0]);
-    bool tmp = false;
     for (unsigned int i = 1; i < v.size(); i++) {
         if (v[i][0] == '-')
-            tmp = Parser::AVOptions(v[i], tmp);
+            Parser::AVOptions(v[i]);
         else
             _sub_files.push_back(v[i]);
     }

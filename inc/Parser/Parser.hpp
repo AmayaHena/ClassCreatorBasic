@@ -49,7 +49,7 @@ class Parser {
         bool parsingBoolean(std::string s);
 
         /* Parsing AV */
-        bool AVOptions(std::string s, bool tmp);
+        void AVOptions(std::string s);
         bool parsingAV(std::vector<std::string> v);
 
         /* Setters */
