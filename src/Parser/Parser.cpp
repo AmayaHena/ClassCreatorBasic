@@ -9,19 +9,9 @@
 
 Parser::Parser() : _main(false), _inheritance(false), _makefile(false), _cmake(false), _folders(false) {}
 
-void Parser::setProjectName(const std::string s)
-{
-    _project_name = s;
-}
-
 std::string Parser::getProjectName(void)
 {
     return _project_name;
-}
-
-void Parser::setMain(const bool b)
-{
-    _main = b;
 }
 
 bool Parser::getMain(void)
@@ -29,19 +19,9 @@ bool Parser::getMain(void)
     return _main;
 }
 
-void Parser::setSubFiles(const std::vector<std::string> v)
-{
-    _sub_files = v;
-}
-
 std::vector<std::string> Parser::getSubFiles(void)
 {
     return _sub_files;
-}
-
-void Parser::setInheritance(const bool b)
-{
-    _inheritance = b;
 }
 
 bool Parser::getInheritance(void)
@@ -49,29 +29,14 @@ bool Parser::getInheritance(void)
     return _inheritance;
 }
 
-void Parser::setMakefile(const bool b)
-{
-    _makefile = b;
-}
-
 bool Parser::getMakefile(void)
 {
     return _makefile;
 }
 
-void Parser::setFolders(const bool b)
-{
-    _folders = b;
-}
-
 bool Parser::getFolders(void)
 {
     return _folders;
-}
-
-void Parser::setCMake(const bool b)
-{
-    _cmake = b;
 }
 
 bool Parser::getCMake(void)

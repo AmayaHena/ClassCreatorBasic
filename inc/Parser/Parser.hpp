@@ -52,15 +52,6 @@ class Parser {
         void AVOptions(std::string s);
         bool parsingAV(std::vector<std::string> v);
 
-        /* Setters */
-        void setProjectName(const std::string s);
-        void setMain(const bool b);
-        void setSubFiles(const std::vector<std::string> v);
-        void setInheritance(const bool b);
-        void setMakefile(const bool b);
-        void setCMake(const bool b);
-        void setFolders(const bool b);
-
         /* Variables */
         std::string _project_name;
         bool _main;
