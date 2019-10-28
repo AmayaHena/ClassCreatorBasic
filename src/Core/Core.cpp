@@ -10,7 +10,6 @@
 Core::Core(std::vector<std::string> v)
 {
     _p.parsingProceed(v);
-    _f.loadConfig(_p.getMain(), _p.getMakefile(), _p.getCMake());
 
     Core::setInheritanceName(_p.getProjectName());
     Core::setInheritance(_p.getProjectName() + ".hpp");
@@ -176,6 +175,9 @@ void Core::buildProject()
 
 bool Core::run()
 {
+    if (!_f.loadConfig(_p.getMain(), _p.getMakefile(), _p.getCMake()))
+        return false;
+
     _w.setHeader(_f.getHeader());
 
     _d.createDir(".", _p.getProjectName());

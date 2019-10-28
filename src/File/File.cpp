@@ -99,5 +99,9 @@ bool File::loadConfig(bool main, bool make, bool cmake)
     _main = loadGeneric("config/main.cpp", main);
     _make = loadGeneric("config/makefile", make);
     _cmake = loadGeneric("config/CMakeLists.txt", cmake);
+    if ((main && _main.empty())
+        || (make && _make.empty())
+        || (cmake && _cmake.empty()))
+        return false;
     return true;
 }
