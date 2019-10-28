@@ -97,19 +97,19 @@ void Parser::AVOptions(std::string s)
     for (int i = 1; s[i]; i++) {
         switch (s[i]) {
             case 'm' :
-                Parser::setMain(true);
+                _main = true;
                 break;
             case 'i' :
-                Parser::setInheritance(true);
+                _inheritance = true;
                 break;
             case 'M' :
-                Parser::setMakefile(true);
+                _makefile = true;
                 break;
             case 'C' :
-                Parser::setCMake(true);
+                _cmake = true;
                 break;
             case 'd' :
-                Parser::setFolders(true);
+                _folders = true;
                 break;
         }
     }
@@ -121,7 +121,7 @@ bool Parser::parsingAV(std::vector<std::string> v)
         return false;
     if (v[0] == "-h")
         return Parser::helperCommand();
-    Parser::setProjectName(v[0]);
+    _project_name = v[0];
     for (unsigned int i = 1; i < v.size(); i++) {
         if (v[i][0] == '-')
             Parser::AVOptions(v[i]);
@@ -191,15 +191,15 @@ int Parser::parsingProceed(std::vector<std::string> v)
 {
     if (Parser::parsingAV(v))
         return 0;
-    Parser::setProjectName(Parser::parsingString("project name", "PascalCase"));
-    Parser::setMain(Parser::parsingBoolean("main file (main.cpp)"));
-    bool file = Parser::parsingBoolean("subfiles");
-    if (file) {
-        Parser::setSubFiles(Parser::parsingStoVector("subfiles names", "PascalCase"));
-        Parser::setInheritance(Parser::parsingBoolean("Inheritance (from your main file)"));
+
+    _project_name = Parser::parsingString("project name", "PascalCase");
+    _main = Parser::parsingBoolean("main file (main.cpp)");
+    if (Parser::parsingBoolean("subfiles")) {
+        _sub_files = Parser::parsingStoVector("subfiles names", "PascalCase");
+        _inheritance = Parser::parsingBoolean("Inheritance (from your main file)");
     }
-    Parser::setFolders(Parser::parsingBoolean("Folders"));
-    Parser::setMakefile(Parser::parsingBoolean("Makefile"));
-    Parser::setCMake(Parser::parsingBoolean("CMakeLists.txt"));
+    _folders = Parser::parsingBoolean("Folders");
+    _makefile = Parser::parsingBoolean("Makefile");
+    _cmake = Parser::parsingBoolean("CMakeLists.txt");
     return 0;
 }
