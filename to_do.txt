@@ -1,0 +1,19 @@
+General
+- optimization
+- babytrotter
+- target include directories (classcreator PUBLIC inc)
+
+Core
+- method for setter and create
+
+File
+- dynamic path ?
+
+Parser
+- make everythign clean
+
+Writer
+- make everything clean
+
+Doc
+- write a real doc
