@@ -16,19 +16,9 @@ std::vector<std::string> File::getMain(void)
     return _main;
 }
 
-void File::setMain(const std::vector<std::string> v)
-{
-    _main = v;
-}
-
 std::vector<std::string> File::getFileCpp(void)
 {
     return _fileCpp;
-}
-
-void File::setFileCpp(const std::vector<std::string> v)
-{
-    _fileCpp = v;
 }
 
 std::vector<std::string> File::getFileHpp(void)
@@ -36,19 +26,9 @@ std::vector<std::string> File::getFileHpp(void)
     return _fileHpp;
 }
 
-void File::setFileHpp(const std::vector<std::string> v)
-{
-    _fileHpp = v;
-}
-
 std::vector<std::string> File::getHeader(void)
 {
     return _header;
-}
-
-void File::setHeader(const std::vector<std::string> v)
-{
-    _header = v;
 }
 
 std::vector<std::string> File::getMakefile(void)
@@ -56,19 +36,9 @@ std::vector<std::string> File::getMakefile(void)
     return _makefile;
 }
 
-void File::setMakefile(const std::vector<std::string> v)
-{
-    _makefile = v;
-}
-
 std::vector<std::string> File::getCMake(void)
 {
     return _cmake;
-}
-
-void File::setCMake(const std::vector<std::string> v)
-{
-    _cmake = v;
 }
 
 bool File::checkFileExist(const std::string s)
@@ -129,14 +99,14 @@ bool File::loadConfig(bool main, bool make, bool cmake)
 {
     if (checkLoadConfig(main, make, cmake) == false)
         return false;
-    File::setFileCpp(File::loadFileToV("config/file.cpp"));
-    File::setFileHpp(File::loadFileToV("config/file.hpp"));
-    File::setHeader(File::loadFileToV("config/header.txt"));
+    _fileHpp = File::loadFileToV("config/file.hpp");
+    _fileCpp = File::loadFileToV("config/file.cpp");
+    _header = File::loadFileToV("config/header.txt");
     if (main == true)
-        File::setMain(File::loadFileToV("config/main.cpp"));
+        _main = File::loadFileToV("config/main.cpp");
     if (make == true)
-        File::setMakefile(File::loadFileToV("config/makefile"));
+        _makefile = File::loadFileToV("config/makefile");
     if (cmake == true)
-        File::setCMake(File::loadFileToV("config/CMakeLists.txt"));
+        _cmake = File::loadFileToV("config/CMakeLists.txt");
     return true;
 }

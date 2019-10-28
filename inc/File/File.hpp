@@ -42,14 +42,6 @@ class File {
 		std::vector<std::string> loadFileToV(std::string path);
 		bool checkLoadConfig(bool main, bool make, bool cmake);
 
-		/* Setters */
-		void setMain(const std::vector<std::string> v);
-		void setFileCpp(const std::vector<std::string> v);
-		void setFileHpp(const std::vector<std::string> v);
-		void setHeader(const std::vector<std::string> v);
-		void setMakefile(const std::vector<std::string> v);
-		void setCMake(const std::vector<std::string> v);
-
 		/* Variables */
 		std::vector<std::string> _main;
 		std::vector<std::string> _fileCpp;
