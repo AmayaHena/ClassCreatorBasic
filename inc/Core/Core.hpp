@@ -43,13 +43,9 @@ class Core {
 		bool generateSubFiles(void);
 		bool generateFolderFiles(void);
 
-		/* Generation Main function */
+		/* Generation Files */
 		bool generateMain(void);
-
-		/* Generate Makefile */
 		bool generateMakefile(void);
-
-		/* Generate Makefile */
 		bool generateCMake(void);
 
 		/* tools */
