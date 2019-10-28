@@ -1,14 +1,12 @@
 General
 - clean code
-- enum for string comp
 - std::file system
-- state for create (Writer)
 - vector to stack
 - optimization
 - babytrotter
 
 Core
-- method for setter and create
+- state for create for Writer from Core
 
 Writer
 - make everything clean
@@ -21,3 +19,7 @@ Parser
 
 Doc
 - write a real doc
+
+
+DONE :
+- enum for string comp DONE
