@@ -34,6 +34,9 @@ class File {
 
 	private:
 
+		/* Generic Tool to load file */
+		std::vector<std::string> loadGeneric(const std::string path, bool request);
+
 		/* Checks */
 		bool checkDirExist(const std::string s);
 		bool checkFileExist(const std::string s);
@@ -42,12 +45,12 @@ class File {
 		std::vector<std::string> loadFileToV(std::string path);
 		bool checkLoadConfig(bool main, bool make, bool cmake);
 
-		/* Variables */
-		std::vector<std::string> _main;
-		std::vector<std::string> _fileCpp;
+		/* Variables - Ressources containers for files*/
 		std::vector<std::string> _fileHpp;
+		std::vector<std::string> _fileCpp;
 		std::vector<std::string> _header;
-		std::vector<std::string> _makefile;
+		std::vector<std::string> _main;
+		std::vector<std::string> _make;
 		std::vector<std::string> _cmake;
 
 };
