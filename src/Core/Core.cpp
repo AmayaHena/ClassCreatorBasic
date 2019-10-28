@@ -11,48 +11,8 @@ Core::Core(std::vector<std::string> v)
 {
     _p.parsingProceed(v);
 
-    Core::setInheritanceName(_p.getProjectName());
-    Core::setInheritance(_p.getProjectName() + ".hpp");
-}
-
-std::vector<std::string> Core::getInc()
-{
-    return _inc;
-}
-
-void Core::setInc(const std::vector<std::string> inc)
-{
-    _inc = inc;
-}
-
-std::vector<std::string> Core::getSrc()
-{
-    return _src;
-}
-
-void Core::setSrc(const std::vector<std::string> src)
-{
-    _src = src;
-}
-
-std::string Core::getInheritance()
-{
-    return _inheritance;
-}
-
-void Core::setInheritance(const std::string inheritance)
-{
-    _inheritance = inheritance;
-}
-
-std::string Core::getInheritanceName()
-{
-    return _inheritance_name;
-}
-
-void Core::setInheritanceName(const std::string inheritance_name)
-{
-    _inheritance_name = inheritance_name;
+    _inheritance_name = _p.getProjectName();
+    _inheritance = _p.getProjectName() + ".hpp";
 }
 
 void Core::fillPath(const std::string s)
@@ -68,12 +28,12 @@ bool Core::generateSubFilesDir(std::vector<std::string> v)
         _d.createDir(_p.getProjectName() + "/src", v[i]);
         if (_p.getInheritance() == true) {
             _w.setFile(_f.getFileHpp());
-            _w.setInclude(Core::getInheritance());
-            _w.setInheritance(Core::getInheritanceName());
+            _w.setInclude(_inheritance);
+            _w.setInheritance(_inheritance_name);
             _w.create(v[i], _p.getProjectName() + "/inc/" + v[i], ".hpp");
             _w.setFile(_f.getFileCpp());
             _w.setInclude(v[i] + "/" + v[i] + ".hpp");
-            _w.setInheritance(Core::getInheritanceName());
+            _w.setInheritance(_inheritance_name);
             _w.create(v[i], _p.getProjectName() + "/src/" + v[i], ".cpp");
         } else {
             _w.setFile(_f.getFileHpp());
@@ -92,12 +52,12 @@ bool Core::generateSubFilesWithoutDir(std::vector<std::string> v)
     for (unsigned int i = 0; i < v.size(); i++) {
         if (_p.getInheritance() == true) {
             _w.setFile(_f.getFileHpp());
-            _w.setInclude(Core::getInheritance());
-            _w.setInheritance(Core::getInheritanceName());
+            _w.setInclude(_inheritance);
+            _w.setInheritance(_inheritance_name);
             _w.create(v[i], _p.getProjectName() + "/inc", ".hpp");
             _w.setFile(_f.getFileCpp());
             _w.setInclude(v[i] + ".hpp");
-            _w.setInheritance(Core::getInheritanceName());
+            _w.setInheritance(_inheritance_name);
             _w.create(v[i], _p.getProjectName() + "/src", ".cpp");
         } else {
             _w.setFile(_f.getFileHpp());
@@ -138,7 +98,7 @@ bool Core::generateFolderFiles()
 bool Core::generateMain()
 {
     _w.setFile(_f.getMain());
-    _w.setInc(Core::getInc());
+    _w.setInc(_inc);
     _w.create("main", _p.getProjectName(), "main");
     _src.push_back("main.cpp");
     return true;
@@ -147,7 +107,7 @@ bool Core::generateMain()
 bool Core::generateMakefile()
 {
     _w.setFile(_f.getMakefile());
-    _w.setSrc(Core::getSrc());
+    _w.setSrc(_src);
     _w.create("Makefile", _p.getProjectName(), "Makefile");
     return true;
 }
@@ -155,8 +115,8 @@ bool Core::generateMakefile()
 bool Core::generateCMake()
 {
     _w.setFile(_f.getCMake());
-    _w.setInc(Core::getInc());
-    _w.setSrc(Core::getSrc());
+    _w.setInc(_inc);
+    _w.setSrc(_src);
     _w.create("CMakeLists", _p.getProjectName(), "CMake");
     return true;
 }

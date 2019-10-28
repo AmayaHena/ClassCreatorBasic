@@ -55,18 +55,6 @@ class Core {
 		/* tools */
 		void buildProject(void);
 
-		/* Getters */
-		std::vector<std::string> getInc(void);
-		std::vector<std::string> getSrc(void);
-		std::string getInheritance(void);
-		std::string getInheritanceName(void);
-
-		/* Setters */
-		void setInc(const std::vector<std::string> inc);
-		void setSrc(const std::vector<std::string> src);
-		void setInheritance(const std::string inheritance);
-		void setInheritanceName(const std::string inheritance);
-
 		/* Class */
 		Parser _p;
 		Dir _d;
