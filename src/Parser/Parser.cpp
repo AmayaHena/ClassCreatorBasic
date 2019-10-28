@@ -95,20 +95,26 @@ bool Parser::helperCommand()
 bool Parser::AVOptions(std::string s, bool tmp)
 {
     for (int i = 1; s[i]; i++) {
-        if (s[i] == 'm')
-            Parser::setMain(true);
-        else if (s[i] == 'f')
-            tmp = true;
-        else if (s[i] == 'i')
-            Parser::setInheritance(true);
-        else if (s[i] == 'M')
-            Parser::setMakefile(true);
-        else if (s[i] == 'C')
-            Parser::setCMake(true);
-        else if (s[i] == 'd')
-            Parser::setFolders(true);
-        else
-            continue;
+        switch (s[i]) {
+            case 'm' :
+                Parser::setMain(true);
+                break;
+            case 'f' :
+                tmp = true;
+                break;
+            case 'i' :
+                Parser::setInheritance(true);
+                break;
+            case 'M' :
+                Parser::setMakefile(true);
+                break;
+            case 'C' :
+                Parser::setCMake(true);
+                break;
+            case 'd' :
+                Parser::setFolders(true);
+                break;
+        }
     }
     return tmp;
 }
@@ -117,7 +123,7 @@ bool Parser::parsingAV(std::vector<std::string> v)
 {
     if (v.empty())
         return false;
-    if (v[0][0] == '-')
+    if (v[0] == "-h")
         return Parser::helperCommand();
     Parser::setProjectName(v[0]);
     bool tmp = false;
