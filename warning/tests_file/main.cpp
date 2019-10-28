@@ -30,8 +30,6 @@ int main()
     d.createDir(s, "One");
 
     d.createDir(".", s);
-    d.createInc(s);
-    d.createSrc(s);
     d.createDir(s + "/src", "One");
     d.createDir(s + "/inc", "One");
     return 0;
