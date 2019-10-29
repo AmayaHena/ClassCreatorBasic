@@ -17,9 +17,9 @@ CXXFLAGS		=	-Wall -Wextra -Werror
 
 SRC_DIR			=	$(realpath src)
 
-SRC				=	$(SRC_DIR)/main.cpp				\
+SRC				=	$(SRC_DIR)/main.cpp			\
 					$(SRC_DIR)/Core/Core.cpp		\
-					$(SRC_DIR)/Parser/Parser.cpp	\
+					$(SRC_DIR)/Parser/Parser.cpp		\
 					$(SRC_DIR)/Dir/Dir.cpp			\
 					$(SRC_DIR)/File/File.cpp		\
 					$(SRC_DIR)/Writer/Writer.cpp
