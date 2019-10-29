@@ -238,17 +238,17 @@ void Writer::useTag(const std::string tag, const std::string name, const std::st
 void Writer::processTag(const std::string s, const std::string name, const std::string path, const std::string type)
 {
     std::string buf;
-    int k = Writer::occurenceNbInS(s, _tag_ref);
     int i = 0;
     int j = s.find(_tag_ref, 0);
+    int k = Writer::occurenceNbInS(s, _tag_ref);
 
     for (int m = 0; m != k; m++) {
         while (i < j)
             _of << s[i++];
         while (s[i++] != '!');
-        while (s[i + 1] != '/')
+        while (s[i] != '*')
             buf += s[i++];
-        while (s[i++] != '/');
+        i += 2;
         Writer::useTag(buf, name, path, type);
         j = s.find(_tag_ref, j + 1);
         buf.clear();
