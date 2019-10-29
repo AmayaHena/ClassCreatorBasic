@@ -1,25 +1,20 @@
 General
-- clean code
 - std::file system
 - vector to stack
 - optimization
 - babytrotter
 
 Core
-- state for create for Writer from Core
 
 Writer
-- make everything clean
 
 File
-- make everythign clean
 
 Parser
-- make everythign clean
 
 Doc
 - write a real doc
 
-
 DONE :
 - enum for string comp DONE
+- clean code
