@@ -91,6 +91,8 @@ bool Core::generateFolderFiles()
 
 bool Core::generateMain()
 {
+    if (!_p.getMain())
+        return false;
     _w.setFile(_f.getMain());
     _w.setInc(_inc);
     _w.create("main", _p.getProjectName(), "main");
@@ -100,6 +102,8 @@ bool Core::generateMain()
 
 bool Core::generateMakefile()
 {
+    if (!_p.getMakefile())
+        return false;
     _w.setFile(_f.getMakefile());
     _w.setSrc(_src);
     _w.create("Makefile", _p.getProjectName(), "Makefile");
@@ -108,6 +112,8 @@ bool Core::generateMakefile()
 
 bool Core::generateCMake()
 {
+    if (!_p.getCMake())
+        return false;
     _w.setFile(_f.getCMake());
     _w.setInc(_inc);
     _w.setSrc(_src);
@@ -119,10 +125,10 @@ void Core::buildProject()
 {
     std::string s;
 
-    if (_p.getCMake() == true)
-        s = "cmake CMakeLists.txt && make";
     if (_p.getMakefile() == true)
         s = "make && make clean";
+    if (_p.getCMake() == true)
+        s = "cmake CMakeLists.txt && make";
     chdir(_p.getProjectName().c_str());
     system(s.c_str());
 }
@@ -135,12 +141,9 @@ bool Core::run()
     _w.setHeader(_f.getHeader());
     _d.createDir(".", _p.getProjectName());
     Core::generateFolderFiles();
-    if (_p.getMain() == true)
-        Core::generateMain();
-    if (_p.getMakefile() == true)
-        Core::generateMakefile();
-    if (_p.getCMake() == true)
-        Core::generateCMake();
+    Core::generateMain();
+    Core::generateMakefile();
+    Core::generateCMake();
     if ((_p.getMakefile() || _p.getCMake()) && _p.getMain())
         Core::buildProject();
     return true;
