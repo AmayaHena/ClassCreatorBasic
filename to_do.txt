@@ -2,7 +2,6 @@ General
 - vector to stack
 - optimization
 - babytrotter
-- print some color
 
 Core
 
@@ -25,3 +24,4 @@ FUTURE
 DONE :
 - enum for string comp DONE
 - clean code
+- print some color
