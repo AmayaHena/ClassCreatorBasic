@@ -27,7 +27,7 @@ class Parser {
 
         /* Parsing public */
         bool helperCommand(void);
-        int parsingProceed(std::vector<std::string> v);
+        void parsingProceed(std::vector<std::string> v);
 
         /* Getters */
         std::string getProjectName(void);
@@ -52,7 +52,7 @@ class Parser {
         void AVOptions(std::string s);
         bool parsingAV(std::vector<std::string> v);
 
-        /* Variables */
+        /* Variables - Ressources for user inputs */
         std::string _project_name;
         bool _main;
         std::vector<std::string> _sub_files;

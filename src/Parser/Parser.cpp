@@ -152,10 +152,10 @@ bool Parser::parsingBoolean(std::string s)
     return false;
 }
 
-int Parser::parsingProceed(std::vector<std::string> v)
+void Parser::parsingProceed(std::vector<std::string> v)
 {
     if (Parser::parsingAV(v))
-        return 0;
+        return;
 
     _project_name = Parser::parsingString("project name", "PascalCase");
     _main = Parser::parsingBoolean("main file (main.cpp)");
@@ -166,5 +166,4 @@ int Parser::parsingProceed(std::vector<std::string> v)
     _folders = Parser::parsingBoolean("Folders");
     _makefile = Parser::parsingBoolean("Makefile");
     _cmake = Parser::parsingBoolean("CMakeLists.txt");
-    return 0;
 }
