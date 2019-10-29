@@ -16,10 +16,10 @@
 #include <string>
 
 /* Class */
-#include "../Dir/Dir.hpp"
-#include "../File/File.hpp"
-#include "../Parser/Parser.hpp"
-#include "../Writer/Writer.hpp"
+#include "Dir/Dir.hpp"
+#include "File/File.hpp"
+#include "Parser/Parser.hpp"
+#include "Writer/Writer.hpp"
 
 class Core {
 
@@ -44,6 +44,10 @@ class Core {
 		bool generateFolderFiles(void);
 
 		/* Generation Files */
+		void createHpp(std::string s);
+		void createHppRoot(std::string s);
+		void createCpp(std::string s);
+		void createCppRoot(std::string s);
 		bool generateMain(void);
 		bool generateMakefile(void);
 		bool generateCMake(void);
