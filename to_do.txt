@@ -1,5 +1,4 @@
 General
-- std::file system
 - vector to stack
 - optimization
 - babytrotter
@@ -15,6 +14,13 @@ Parser
 
 Doc
 - write a real doc
+
+---
+
+FUTURE
+- std::file system (not live)
+
+---
 
 DONE :
 - enum for string comp DONE
