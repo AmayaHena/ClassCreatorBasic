@@ -44,16 +44,10 @@ class Writer {
 		void useTagMake(const std::string tag, const std::string path);
 
 		/* Tools */
-		void cleanRessources();
+		void cleanRessources(void);
 		int occurenceNbInS(const std::string &s, const std::string &tag);
-		bool findTag(const std::string s, const std::string tag);
-		std::ofstream createFileG(const std::string name, const std::string path, std::string type);
-		std::vector<std::string> getFile(std::string type);
 		void writeVectorInFile(const std::string s1, const std::vector<std::string> v, const std::string s2);
-
-		/* Getters */
-		std::vector<std::string> getHeader(void);
-		std::vector<std::string> getFile(void);
+		std::ofstream createFileG(const std::string name, const std::string path, std::string type);
 
 		/* enum for maps */
 		enum type {HPP, CPP, MAIN, MAKE, CMAKE};

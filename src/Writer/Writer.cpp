@@ -45,19 +45,9 @@ void Writer::setHeader(std::vector<std::string> v)
     _header = v;
 }
 
-std::vector<std::string> Writer::getHeader(void)
-{
-    return _header;
-}
-
 void Writer::setFile(const std::vector<std::string> v)
 {
     _file = v;
-}
-
-std::vector<std::string> Writer::getFile(void)
-{
-    return _file;
 }
 
 void Writer::setSrc(const std::vector<std::string> v)
@@ -90,14 +80,6 @@ void Writer::cleanRessources()
     _include.clear();
 }
 
-bool Writer::findTag(const std::string s, std::string const tag)
-{
-    for (unsigned int i = 0; i < s.length(); i++)
-        if (s.substr(i, tag.length()) == tag)
-            return true;
-    return false;
-}
-
 int Writer::occurenceNbInS(const std::string &s, const std::string &tag)
 {
     int N = s.length();
@@ -113,6 +95,12 @@ int Writer::occurenceNbInS(const std::string &s, const std::string &tag)
             match++;
     }
     return match;
+}
+
+void Writer::writeVectorInFile(const std::string s1, const std::vector<std::string> v, const std::string s2)
+{
+    for (unsigned int i = 0; i < v.size(); i++)
+        _of << s1 << v[i] << s2 << std::endl;
 }
 
 std::ofstream Writer::createFileG(const std::string name, const std::string path, std::string type)
@@ -139,12 +127,6 @@ std::ofstream Writer::createFileG(const std::string name, const std::string path
     std::ofstream file(s);
     std::cout << "File " << path << '/' << name << " created" << std::endl;
     return file;
-}
-
-void Writer::writeVectorInFile(const std::string s1, const std::vector<std::string> v, const std::string s2)
-{
-    for (unsigned int i = 0; i < v.size(); i++)
-        _of << s1 << v[i] << s2 << std::endl;
 }
 
 void Writer::useTagCpp(const std::string tag, const std::string name)
@@ -263,7 +245,7 @@ bool Writer::create(const std::string name, const std::string path, const std::s
     _of = Writer::createFileG(name, path, type);
 
     for (unsigned int i = 0; i < _file.size(); i++) {
-        if (Writer::findTag(_file[i], _tag_ref) == true)
+        if (Writer::occurenceNbInS(_file[i], _tag_ref) > 0)
             Writer::processTag(_file[i], name, path, type);
         else
             _of << _file[i] << std::endl;
