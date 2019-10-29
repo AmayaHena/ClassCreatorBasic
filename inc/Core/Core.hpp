@@ -28,7 +28,7 @@ class Core {
 		Core(std::vector<std::string> v);
 		~Core() = default;
 
-		/* Run the program */
+		/* Main Method - Run the program */
 		bool run(void);
 
 	private:
@@ -38,15 +38,12 @@ class Core {
 
 		/* Generation Folders and Files */
 		void createGeneric(std::vector<std::string> file, std::string name, std::string path, std::string type);
-		bool generateSubFilesDir(std::vector<std::string> v);
-		bool generateSubFilesWithoutDir(std::vector<std::string> v);
-		bool generateSubFiles(void);
-		bool generateFolderFiles(void);
+		bool generateCode(void);
 
 		/* Generation Files */
 		void createHpp(std::string s);
-		void createHppRoot(std::string s);
 		void createCpp(std::string s);
+		void createHppRoot(std::string s);
 		void createCppRoot(std::string s);
 		bool generateMain(void);
 		bool generateMakefile(void);
@@ -61,11 +58,9 @@ class Core {
 		File _f;
 		Writer _w;
 
-		/* Variables */
+		/* Variables - Ressource to build project */
 		std::vector<std::string> _inc;
 		std::vector<std::string> _src;
-		std::string _inheritance_name;
-		std::string _inheritance;
 
 };
 

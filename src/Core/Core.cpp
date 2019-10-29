@@ -10,9 +10,6 @@
 Core::Core(std::vector<std::string> v)
 {
     _p.parsingProceed(v);
-
-    _inheritance_name = _p.getProjectName();
-    _inheritance = _p.getProjectName() + ".hpp";
 }
 
 void Core::fillPath(const std::string s)
@@ -66,7 +63,7 @@ void Core::createCppRoot(std::string s)
     _w.create(s, _p.getProjectName() + "/src", ".cpp");
 }
 
-bool Core::generateFolderFiles()
+bool Core::generateCode()
 {
     _d.createDir(_p.getProjectName(), "inc");
     _d.createDir(_p.getProjectName(), "src");
@@ -140,7 +137,7 @@ bool Core::run()
 
     _w.setHeader(_f.getHeader());
     _d.createDir(".", _p.getProjectName());
-    Core::generateFolderFiles();
+    Core::generateCode();
     Core::generateMain();
     Core::generateMakefile();
     Core::generateCMake();
