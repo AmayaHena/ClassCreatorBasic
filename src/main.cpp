@@ -25,6 +25,6 @@ int main(int ac, char **av)
 
     if (c.run() == false)
         return 84;
-    std::cout << "Creation Done" << std::endl;
+    std::cout << "\033[1;32mCreation Done\033[0m" << std::endl;
     return 0;
 }

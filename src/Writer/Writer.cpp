@@ -125,7 +125,7 @@ std::ofstream Writer::createFileG(const std::string name, const std::string path
             break;
     }
     std::ofstream file(s);
-    std::cout << "File " << path << '/' << name << " created" << std::endl;
+    std::cout << "\033[0;32mFile \033[0m" << path << '/' << name << "\033[0;32m created\033[0m" << std::endl;
     return file;
 }
 

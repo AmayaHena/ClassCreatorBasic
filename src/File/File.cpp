@@ -46,7 +46,7 @@ bool File::checkFileExist(const std::string s)
     struct stat buffer;
 
     if (stat(s.c_str(), &buffer) == -1) {
-        std::cout << "File " << s << " doesnt exits" << std::endl;
+        std::cout << "\033[0;31mFile \033[0m" << s << "\033[0;31m doesnt exits\033[0m" << std::endl;
         return false;
     }
     return true;
@@ -57,7 +57,7 @@ bool File::checkDirExist(const std::string s)
     struct stat buffer;
 
     if (stat(s.c_str(), &buffer) == -1) {
-        std::cout << "Dir " << s << " doesnt exits" << std::endl;
+        std::cout << "\033[0;31mDir \033[0m" << s << "\033[0;31m doesnt exits\033[0m" << std::endl;
         return false;
     }
     return true;
@@ -71,7 +71,7 @@ std::vector<std::string> File::loadFileToV(const std::string path)
 
     while(std::getline(f, s))
         v.push_back(s);
-    std::cout << "File " << path << " loaded" << std::endl;
+    std::cout << "\033[0;32mFile \033[0m" << path << "\033[0;32m loaded\033[0m" << std::endl;
     return v;
 }
 
