@@ -3,6 +3,7 @@ General
 - vector to stack
 - optimization
 - babytrotter
+- print some color
 
 Core
 
