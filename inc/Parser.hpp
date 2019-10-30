@@ -20,41 +20,41 @@
 
 class Parser {
 
-    public:
+	public:
 
-        Parser();
-        ~Parser() = default;
+		Parser();
+		~Parser() = default;
 
-        /* Parsing public */
-        void parsingProceed(const std::vector<std::string> v);
+		/* Parsing public */
+		void parsingProceed(const std::vector<std::string> v);
 
-        /* Getters */
-        std::string getProjectName(void);
-        bool getMain(void);
-        std::vector<std::string> getSubFiles(void);
-        bool getInheritance(void);
-        bool getMakefile(void);
-        bool getCMake(void);
-        bool getFolders(void);
+		/* Getters */
+		std::string getProjectName(void);
+		bool getMain(void);
+		std::vector<std::string> getSubFiles(void);
+		bool getInheritance(void);
+		bool getMakefile(void);
+		bool getCMake(void);
+		bool getFolders(void);
 
-    private:
+	private:
 
-        /* Parsing private */
-        std::string userInput(void);
+		/* Parsing private */
+		std::string userInput(void);
 
-        /* Parsing Types */
-        std::string parsingString(const std::string type, const std::string convention);
-        std::vector<std::string> parsingStoVector(const std::string type, const std::string convention);
-        bool parsingBoolean(std::string s);
+		/* Parsing Types */
+		std::string parsingString(const std::string type, const std::string convention);
+		std::vector<std::string> parsingStoVector(const std::string type, const std::string convention);
+		bool parsingBoolean(std::string s);
 
-        /* Variables - Ressources for user inputs */
-        std::string _project_name;
-        bool _main;
-        std::vector<std::string> _sub_files;
-        bool _inheritance;
-        bool _makefile;
-        bool _cmake;
-        bool _folders;
+		/* Variables - Ressources for user inputs */
+		std::string _project_name;
+		bool _main;
+		std::vector<std::string> _sub_files;
+		bool _inheritance;
+		bool _makefile;
+		bool _cmake;
+		bool _folders;
 
 };
 

@@ -10,13 +10,13 @@
 
 class Dir {
 
-    public:
+	public:
 
-        Dir() = default;
-        ~Dir() = default;
+		Dir() = default;
+		~Dir() = default;
 
-        /* Create Dirs */
-        bool createDir(const std::string path, const std::string name);
+		/* Create Dirs */
+		bool createDir(const std::string path, const std::string name);
 
 };
 

@@ -9,13 +9,13 @@
 
 int main()
 {
-    std::vector<std::string> v;
-    v.clear();
+	std::vector<std::string> v;
+	v.clear();
 
-    Core c(v);
+	Core c(v);
 
-    if (c.run() == false)
-        return 84;
-    std::cout << "\033[1;32mCreation Done\033[0m" << std::endl;
-    return 0;
+	if (c.run() == false)
+		return 84;
+	std::cout << "\033[1;32mCreation Done\033[0m" << std::endl;
+	return 0;
 }

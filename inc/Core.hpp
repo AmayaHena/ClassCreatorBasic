@@ -26,7 +26,7 @@ class Core {
 
 	public:
 
-		Core(const std::vector<std::string> v);
+		Core(const std::vector<std::string> &v);
 		~Core() = default;
 
 		/* Main Method - Run the program */
@@ -35,7 +35,7 @@ class Core {
 	private:
 
 		/* Fill Path for Ressources _inc and _src */
-		void fillPath(const std::string s);
+		void fillPath(const std::string &s);
 
 		/* Generation Folders and Files */
 		bool generateCode(void);
