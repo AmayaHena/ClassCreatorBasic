@@ -4,21 +4,21 @@ project(classCreator)
 
 set(SRCS
     src/main.cpp
-    src/Core/Core.cpp
-    src/Dir/Dir.cpp
-    src/File/File.cpp
-    src/Parser/Parser.cpp
-    src/Writer/Writer.cpp
-    src/State/State.cpp
+    src/Core.cpp
+    src/Dir.cpp
+    src/File.cpp
+    src/Parser.cpp
+    src/Writer.cpp
+    src/State.cpp
     )
 
 set(HEADERS
-    inc/Core/Core.hpp
-    inc/Dir/Dir.hpp
-    inc/File/File.hpp
-    inc/Parser/Parser.hpp
-    inc/Writer/Writer.hpp
-    inc/State/State.hpp
+    inc/Core.hpp
+    inc/Dir.hpp
+    inc/File.hpp
+    inc/Parser.hpp
+    inc/Writer.hpp
+    inc/State.hpp
     )
 
 add_executable(classCreator ${SRCS} ${HEADERS})

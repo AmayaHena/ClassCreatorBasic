@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "Core/Core.hpp"
+#include "Core.hpp"
 
 int main()
 {
