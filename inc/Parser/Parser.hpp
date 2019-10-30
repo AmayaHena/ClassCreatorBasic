@@ -26,7 +26,6 @@ class Parser {
         ~Parser() = default;
 
         /* Parsing public */
-        bool helperCommand(void);
         void parsingProceed(const std::vector<std::string> v);
 
         /* Getters */
@@ -47,10 +46,6 @@ class Parser {
         std::string parsingString(const std::string type, const std::string convention);
         std::vector<std::string> parsingStoVector(const std::string type, const std::string convention);
         bool parsingBoolean(std::string s);
-
-        /* Parsing AV */
-        void AVOptions(const std::string s);
-        bool parsingAV(const std::vector<std::string> v);
 
         /* Variables - Ressources for user inputs */
         std::string _project_name;

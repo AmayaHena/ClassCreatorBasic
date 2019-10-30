@@ -44,58 +44,6 @@ bool Parser::getCMake(void)
     return _cmake;
 }
 
-bool Parser::helperCommand()
-{
-    std::cout << "usage: classCreator [Project Name] [-miMCdf] ..." << std::endl
-              << std::endl << "\tOptions:" << std::endl
-              << "\t-m\tmake a main function" << std::endl
-              << "\t-i\tmake inheritance from the main class of the project" << std::endl
-              << "\t-M\tmake a makefile" << std::endl
-              << "\t-C\tmake CMakeLists.txt for CMake" << std::endl
-              << "\t-d\tmake directory for classes" << std::endl
-              << "\t-f\tmake some subfiles for your project, muste be follow by subfiles name" << std::endl << std::endl;
-    return false;
-}
-
-void Parser::AVOptions(const std::string s)
-{
-    for (int i = 1; s[i]; i++) {
-        switch (s[i]) {
-            case 'm' :
-                _main = true;
-                break;
-            case 'i' :
-                _inheritance = true;
-                break;
-            case 'M' :
-                _makefile = true;
-                break;
-            case 'C' :
-                _cmake = true;
-                break;
-            case 'd' :
-                _folders = true;
-                break;
-        }
-    }
-}
-
-bool Parser::parsingAV(const std::vector<std::string> v)
-{
-    if (v.empty())
-        return false;
-    if (v[0] == "-h")
-        return Parser::helperCommand();
-    _project_name = v[0];
-    for (unsigned int i = 1; i < v.size(); i++) {
-        if (v[i][0] == '-')
-            Parser::AVOptions(v[i]);
-        else
-            _sub_files.push_back(v[i]);
-    }
-    return true;
-}
-
 std::string Parser::userInput()
 {
     std::string s;
@@ -154,9 +102,6 @@ bool Parser::parsingBoolean(std::string s)
 
 void Parser::parsingProceed(const std::vector<std::string> v)
 {
-    if (Parser::parsingAV(v))
-        return;
-
     _project_name = Parser::parsingString("project name", "PascalCase");
     _main = Parser::parsingBoolean("main file (main.cpp)");
     if (Parser::parsingBoolean("subfiles")) {

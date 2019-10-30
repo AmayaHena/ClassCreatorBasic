@@ -7,19 +7,10 @@
 
 #include "Core/Core.hpp"
 
-int main(int ac, char **av)
+int main()
 {
-    (void)ac;
     std::vector<std::string> v;
-
-    for (unsigned int i = 0; av[i]; i++)
-        v.push_back(av[i]);
-    v.erase(v.begin());
-    if (v.size() == 1 && (v[0] == "-h" || v[0] == "--help")) {
-        Parser p;
-        p.helperCommand();
-        return 0;
-    }
+    v.clear();
 
     Core c(v);
 
