@@ -12,8 +12,7 @@ Just some explaination below to know how to edit them
 
 WARNING :
 First, never change their location and their names !
-Second, watch out about the flag, if you don't pay attention it won't be able to compile !
-
+Second, watch out about the tag, if you don't pay attention it won't be able to compile !
 
 
 For EVERY files the syntax for variables is :
@@ -23,7 +22,7 @@ For EVERY files the syntax for variables is :
 Now file per file (with the following format) :
 name of the file :
 - /*#!Text*/             : text               [text]
-Flag with the synthax    quick description    example
+Tag with the synthax     quick description    example
 
 main.cpp :
 - /*#!Header*/ : there will be your header                [reference to header.txt]

@@ -1,7 +1,7 @@
 ClassCreator is a project to create generic file for cpp with personalization on files
 
 To build the project use cmake :
-cmake CMakeLists.txt
+cmake .
 
-There is no option juste run the program :
+There is no option just run the program :
 ./classCreator
