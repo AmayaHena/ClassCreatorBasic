@@ -17,6 +17,7 @@ Doc
 
 FUTURE
 - std::file system (not live)
+- language modularity (not only CPP)
 
 ---
 
