@@ -20,6 +20,7 @@
 #include "File/File.hpp"
 #include "Parser/Parser.hpp"
 #include "Writer/Writer.hpp"
+#include "State/State.hpp"
 
 class Core {
 
@@ -37,17 +38,7 @@ class Core {
 		void fillPath(const std::string s);
 
 		/* Generation Folders and Files */
-		void createGeneric(std::vector<std::string> file, std::string name, std::string path, std::string type);
 		bool generateCode(void);
-
-		/* Generation Files */
-		void createHpp(std::string s);
-		void createCpp(std::string s);
-		void createHppRoot(std::string s);
-		void createCppRoot(std::string s);
-		bool generateMain(void);
-		bool generateMakefile(void);
-		bool generateCMake(void);
 
 		/* tools */
 		void buildProject(void);
@@ -57,6 +48,7 @@ class Core {
 		Dir _d;
 		File _f;
 		Writer _w;
+		State _s;
 
 		/* Variables - Ressource to build project */
 		std::vector<std::string> _inc;
