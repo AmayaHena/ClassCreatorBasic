@@ -103,7 +103,7 @@ void Writer::writeVectorInFile(const std::string s1, const std::vector<std::stri
         _of << s1 << v[i] << s2 << std::endl;
 }
 
-std::ofstream Writer::createFileG(const std::string name, const std::string path, std::string type)
+std::ofstream Writer::createFile(const std::string name, const std::string path, const std::string type)
 {
     std::string s;
 
@@ -242,7 +242,7 @@ void Writer::processTag(const std::string s, const std::string name, const std::
 
 bool Writer::create(const std::string name, const std::string path, const std::string type)
 {
-    _of = Writer::createFileG(name, path, type);
+    _of = Writer::createFile(name, path, type);
 
     for (unsigned int i = 0; i < _file.size(); i++) {
         if (Writer::occurenceNbInS(_file[i], _tag_ref) > 0)

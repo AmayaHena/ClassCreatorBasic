@@ -57,7 +57,7 @@ bool Parser::helperCommand()
     return false;
 }
 
-void Parser::AVOptions(std::string s)
+void Parser::AVOptions(const std::string s)
 {
     for (int i = 1; s[i]; i++) {
         switch (s[i]) {
@@ -80,7 +80,7 @@ void Parser::AVOptions(std::string s)
     }
 }
 
-bool Parser::parsingAV(std::vector<std::string> v)
+bool Parser::parsingAV(const std::vector<std::string> v)
 {
     if (v.empty())
         return false;
@@ -152,7 +152,7 @@ bool Parser::parsingBoolean(std::string s)
     return false;
 }
 
-void Parser::parsingProceed(std::vector<std::string> v)
+void Parser::parsingProceed(const std::vector<std::string> v)
 {
     if (Parser::parsingAV(v))
         return;

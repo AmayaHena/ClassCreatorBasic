@@ -75,7 +75,7 @@ std::vector<std::string> File::loadFileToV(const std::string path)
     return v;
 }
 
-std::vector<std::string> File::loadGeneric(const std::string path, bool request)
+std::vector<std::string> File::loadFile(const std::string path, const bool request)
 {
     std::vector<std::string> v;
 
@@ -87,18 +87,18 @@ std::vector<std::string> File::loadGeneric(const std::string path, bool request)
     return File::loadFileToV(path);
 }
 
-bool File::loadConfig(bool main, bool make, bool cmake)
+bool File::loadConfig(const bool main, const bool make, const bool cmake)
 {
     if (checkDirExist("config") == false)
         return false;
-    _fileHpp = loadGeneric("config/file.hpp", true);
-    _fileCpp = loadGeneric("config/file.cpp", true);
-    _header = loadGeneric("config/header.txt", true);
+    _fileHpp = loadFile("config/file.hpp", true);
+    _fileCpp = loadFile("config/file.cpp", true);
+    _header = loadFile("config/header.txt", true);
     if (_fileHpp.empty() || _fileCpp.empty() || _header.empty())
         return false;
-    _main = loadGeneric("config/main.cpp", main);
-    _make = loadGeneric("config/makefile", make);
-    _cmake = loadGeneric("config/CMakeLists.txt", cmake);
+    _main = loadFile("config/main.cpp", main);
+    _make = loadFile("config/makefile", make);
+    _cmake = loadFile("config/CMakeLists.txt", cmake);
     if ((main && _main.empty())
         || (make && _make.empty())
         || (cmake && _cmake.empty()))

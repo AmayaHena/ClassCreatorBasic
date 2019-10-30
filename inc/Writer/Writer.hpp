@@ -47,7 +47,7 @@ class Writer {
 		void cleanRessources(void);
 		int occurenceNbInS(const std::string &s, const std::string &tag);
 		void writeVectorInFile(const std::string s1, const std::vector<std::string> v, const std::string s2);
-		std::ofstream createFileG(const std::string name, const std::string path, std::string type);
+		std::ofstream createFile(const std::string name, const std::string path, const std::string type);
 
 		/* enum for maps */
 		enum type {HPP, CPP, MAIN, MAKE, CMAKE};

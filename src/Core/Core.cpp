@@ -7,7 +7,7 @@
 
 #include "Core/Core.hpp"
 
-Core::Core(std::vector<std::string> v)
+Core::Core(const std::vector<std::string> v)
 {
     _p.parsingProceed(v);
 }

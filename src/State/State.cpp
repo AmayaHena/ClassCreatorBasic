@@ -7,7 +7,7 @@
 
 #include "State/State.hpp"
 
-void State::createHpp(Parser *p, Writer *w, std::vector<std::string> file, std::string s)
+void State::createHpp(Parser *p, Writer *w, const std::vector<std::string> file, const std::string s)
 {
     w->setFile(file);
 
@@ -23,7 +23,7 @@ void State::createHpp(Parser *p, Writer *w, std::vector<std::string> file, std::
     w->create(s, p->getProjectName() + "/inc", ".hpp");
 }
 
-void State::createCpp(Parser *p, Writer *w, std::vector<std::string> file, std::string s)
+void State::createCpp(Parser *p, Writer *w, const std::vector<std::string> file, const std::string s)
 {
     w->setFile(file);
 
@@ -39,20 +39,20 @@ void State::createCpp(Parser *p, Writer *w, std::vector<std::string> file, std::
     w->create(s, p->getProjectName() + "/src", ".cpp");
 }
 
-void State::createHppRoot(Parser *p, Writer *w, std::vector<std::string> file, std::string s)
+void State::createHppRoot(Parser *p, Writer *w, const std::vector<std::string> file, const std::string s)
 {
     w->setFile(file);
     w->create(s, p->getProjectName() + "/inc", ".hpp");
 }
 
-void State::createCppRoot(Parser *p, Writer *w, std::vector<std::string> file, std::string s)
+void State::createCppRoot(Parser *p, Writer *w, const std::vector<std::string> file, const std::string s)
 {
     w->setFile(file);
     w->setInclude("../inc/" + s + ".hpp");
     w->create(s, p->getProjectName() + "/src", ".cpp");
 }
 
-void State::generateMain(Parser *p, Writer *w, std::vector<std::string> file, std::vector<std::string> inc)
+void State::generateMain(Parser *p, Writer *w, const std::vector<std::string> file, const std::vector<std::string> inc)
 {
     if (!p->getMain())
         return;
@@ -61,7 +61,7 @@ void State::generateMain(Parser *p, Writer *w, std::vector<std::string> file, st
     w->create("main", p->getProjectName(), "main");
 }
 
-void State::generateMakefile(Parser *p, Writer *w, std::vector<std::string> file, std::vector<std::string> src)
+void State::generateMakefile(Parser *p, Writer *w, const std::vector<std::string> file, const std::vector<std::string> src)
 {
     if (!p->getMakefile())
         return;
@@ -70,7 +70,7 @@ void State::generateMakefile(Parser *p, Writer *w, std::vector<std::string> file
     w->create("Makefile", p->getProjectName(), "Makefile");
 }
 
-void State::generateCMake(Parser *p, Writer *w, std::vector<std::string> file, std::vector<std::string> inc, std::vector<std::string> src)
+void State::generateCMake(Parser *p, Writer *w, const std::vector<std::string> file, const std::vector<std::string> inc, const std::vector<std::string> src)
 {
     if (!p->getCMake())
         return;

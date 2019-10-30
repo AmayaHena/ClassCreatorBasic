@@ -26,7 +26,7 @@ class Core {
 
 	public:
 
-		Core(std::vector<std::string> v);
+		Core(const std::vector<std::string> v);
 		~Core() = default;
 
 		/* Main Method - Run the program */
