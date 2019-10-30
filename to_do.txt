@@ -1,5 +1,4 @@
 General
-- vector to stack
 - optimization
 - babytrotter
 
@@ -25,3 +24,9 @@ DONE :
 - enum for string comp DONE
 - clean code
 - print some color
+
+---
+
+DROP :
+- vector to stack
+impossible with the current algorithm
