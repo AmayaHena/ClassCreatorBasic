@@ -29,18 +29,18 @@ class Parser {
 		void parsingProceed(const std::vector<std::string> &v);
 
 		/* Getters */
-		std::string getProjectName(void);
-		bool getMain(void);
-		std::vector<std::string> getSubFiles(void);
-		bool getInheritance(void);
-		bool getMakefile(void);
-		bool getCMake(void);
-		bool getFolders(void);
+		std::string getProjectName();
+		bool getMain();
+		std::vector<std::string> getSubFiles();
+		bool getInheritance();
+		bool getMakefile();
+		bool getCMake();
+		bool getFolders();
 
 	private:
 
 		/* Parsing private */
-		std::string userInput(void);
+		std::string userInput();
 
 		/* Parsing Types */
 		std::string parsingString(const std::string &type, const std::string &convention);

@@ -30,7 +30,7 @@ class Core {
 		~Core() = default;
 
 		/* Main Method - Run the program */
-		bool run(void);
+		bool run();
 
 	private:
 
@@ -38,10 +38,10 @@ class Core {
 		void fillPath(const std::string &s);
 
 		/* Generation Folders and Files */
-		bool generateCode(void);
+		bool generateCode();
 
 		/* tools */
-		void buildProject(void);
+		void buildProject();
 
 		/* Class */
 		Parser _p;

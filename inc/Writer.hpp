@@ -44,7 +44,7 @@ class Writer {
 		void useTagMake(const std::string &tag, const std::string &path);
 
 		/* Tools */
-		void cleanRessources(void);
+		void cleanRessources();
 		int occurenceNbInS(const std::string &s, const std::string &tag);
 		void writeVectorInFile(const std::string &s1, const std::vector<std::string> &v, const std::string &s2);
 		std::ofstream createFile(const std::string &name, const std::string &path, const std::string &type);

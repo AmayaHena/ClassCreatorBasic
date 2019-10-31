@@ -25,12 +25,12 @@ class File {
 		bool loadConfig(const bool main, const bool make, const bool cmake);
 
 		/* Getters */
-		std::vector<std::string> getMain(void);
-		std::vector<std::string> getFileCpp(void);
-		std::vector<std::string> getFileHpp(void);
-		std::vector<std::string> getHeader(void);
-		std::vector<std::string> getMakefile(void);
-		std::vector<std::string> getCMake(void);
+		std::vector<std::string> getMain();
+		std::vector<std::string> getFileCpp();
+		std::vector<std::string> getFileHpp();
+		std::vector<std::string> getHeader();
+		std::vector<std::string> getMakefile();
+		std::vector<std::string> getCMake();
 
 	private:
 
