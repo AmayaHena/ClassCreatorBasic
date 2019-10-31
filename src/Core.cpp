@@ -20,16 +20,16 @@ bool Core::generateCode()
 	_d.createDir(_p.getProjectName(), "inc");
 	_d.createDir(_p.getProjectName(), "src");
 
-	_s.createHppRoot(&_p, &_w, _f.getFileHpp(), _p.getProjectName());
-	_s.createCppRoot(&_p, &_w, _f.getFileCpp(), _p.getProjectName());
+	_s.createHppRoot(_p, _w, _f.getFileHpp(), _p.getProjectName());
+	_s.createCppRoot(_p, _w, _f.getFileCpp(), _p.getProjectName());
 	Core::fillPath(_p.getProjectName());
 	if (_p.getSubFiles().size() <= 0)
 		return true;
 
 	std::vector<std::string> subfiles = _p.getSubFiles();
 	for (unsigned int i = 0; i < subfiles.size(); i++) {
-		_s.createHpp(&_p, &_w, _f.getFileHpp(), subfiles[i]);
-		_s.createCpp(&_p, &_w, _f.getFileCpp(), subfiles[i]);
+		_s.createHpp(_p, _w, _f.getFileHpp(), subfiles[i]);
+		_s.createCpp(_p, _w, _f.getFileCpp(), subfiles[i]);
 		if (_p.getFolders())
 			Core::fillPath(subfiles[i] + "/" + subfiles[i]);
 		else
@@ -60,9 +60,9 @@ bool Core::run()
 	_w.setHeader(_f.getHeader());
 	_d.createDir(".", _p.getProjectName());
 	Core::generateCode();
-	_s.generateMain(&_p, &_w, _f.getMain(), _inc);
-	_s.generateMakefile(&_p, &_w, _f.getMakefile(), _src);
-	_s.generateCMake(&_p, &_w, _f.getCMake(), _inc, _src);
+	_s.generateMain(_p, _w, _f.getMain(), _inc);
+	_s.generateMakefile(_p, _w, _f.getMakefile(), _src);
+	_s.generateCMake(_p, _w, _f.getCMake(), _inc, _src);
 	if ((_p.getMakefile() || _p.getCMake()) && _p.getMain())
 		Core::buildProject();
 	return true;

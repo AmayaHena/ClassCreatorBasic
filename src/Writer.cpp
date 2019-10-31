@@ -45,27 +45,27 @@ void Writer::setHeader(std::vector<std::string> v)
 	_header = v;
 }
 
-void Writer::setFile(const std::vector<std::string> v)
+void Writer::setFile(const std::vector<std::string> &v)
 {
 	_file = v;
 }
 
-void Writer::setSrc(const std::vector<std::string> v)
+void Writer::setSrc(const std::vector<std::string> &v)
 {
 	_src = v;
 }
 
-void Writer::setInc(const std::vector<std::string> v)
+void Writer::setInc(const std::vector<std::string> &v)
 {
 	_inc = v;
 }
 
-void Writer::setInheritance(const std::string s)
+void Writer::setInheritance(const std::string &s)
 {
 	_inheritance = s;
 }
 
-void Writer::setInclude(const std::string s)
+void Writer::setInclude(const std::string &s)
 {
 	_include = s;
 }
@@ -97,13 +97,13 @@ int Writer::occurenceNbInS(const std::string &s, const std::string &tag)
 	return match;
 }
 
-void Writer::writeVectorInFile(const std::string s1, const std::vector<std::string> v, const std::string s2)
+void Writer::writeVectorInFile(const std::string &s1, const std::vector<std::string> &v, const std::string &s2)
 {
 	for (unsigned int i = 0; i < v.size(); i++)
 		_of << s1 << v[i] << s2 << std::endl;
 }
 
-std::ofstream Writer::createFile(const std::string name, const std::string path, const std::string type)
+std::ofstream Writer::createFile(const std::string &name, const std::string &path, const std::string &type)
 {
 	std::string s;
 
@@ -129,7 +129,7 @@ std::ofstream Writer::createFile(const std::string name, const std::string path,
 	return file;
 }
 
-void Writer::useTagCpp(const std::string tag, const std::string name)
+void Writer::useTagCpp(const std::string &tag, const std::string &name)
 {
 	switch (_tagCPP[tag]) {
 		case INCMAIN :
@@ -151,7 +151,7 @@ void Writer::useTagCpp(const std::string tag, const std::string name)
 	}
 }
 
-void Writer::useTagHpp(const std::string tag, const std::string name)
+void Writer::useTagHpp(const std::string &tag, const std::string &name)
 {
 	switch (_tagHPP[tag]) {
 		case FILENAME :
@@ -174,7 +174,7 @@ void Writer::useTagHpp(const std::string tag, const std::string name)
 	}
 }
 
-void Writer::useTagMake(const std::string tag, const std::string path)
+void Writer::useTagMake(const std::string &tag, const std::string &path)
 {
 	switch (_tagMake[tag]) {
 		case PROGNAME :
@@ -192,7 +192,7 @@ void Writer::useTagMake(const std::string tag, const std::string path)
 	}
 }
 
-void Writer::useTag(const std::string tag, const std::string name, const std::string path, const std::string type)
+void Writer::useTag(const std::string &tag, const std::string &name, const std::string &path, const std::string &type)
 {
 	if (tag == "Header") {
 		Writer::writeVectorInFile("", _header, "");
@@ -217,7 +217,7 @@ void Writer::useTag(const std::string tag, const std::string name, const std::st
 	}
 }
 
-void Writer::processTag(const std::string s, const std::string name, const std::string path, const std::string type)
+void Writer::processTag(const std::string &s, const std::string &name, const std::string &path, const std::string type)
 {
 	std::string buf;
 	int i = 0;
@@ -240,7 +240,7 @@ void Writer::processTag(const std::string s, const std::string name, const std::
 	_of << std::endl;
 }
 
-bool Writer::create(const std::string name, const std::string path, const std::string type)
+bool Writer::create(const std::string &name, const std::string &path, const std::string type)
 {
 	_of = Writer::createFile(name, path, type);
 

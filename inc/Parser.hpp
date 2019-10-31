@@ -26,7 +26,7 @@ class Parser {
 		~Parser() = default;
 
 		/* Parsing public */
-		void parsingProceed(const std::vector<std::string> v);
+		void parsingProceed(const std::vector<std::string> &v);
 
 		/* Getters */
 		std::string getProjectName(void);
@@ -43,8 +43,8 @@ class Parser {
 		std::string userInput(void);
 
 		/* Parsing Types */
-		std::string parsingString(const std::string type, const std::string convention);
-		std::vector<std::string> parsingStoVector(const std::string type, const std::string convention);
+		std::string parsingString(const std::string &type, const std::string &convention);
+		std::vector<std::string> parsingStoVector(const std::string &type, const std::string &convention);
 		bool parsingBoolean(std::string s);
 
 		/* Variables - Ressources for user inputs */

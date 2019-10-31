@@ -53,7 +53,7 @@ std::string Parser::userInput()
 	return s;
 }
 
-std::string Parser::parsingString(const std::string type, const std::string convention)
+std::string Parser::parsingString(const std::string &type, const std::string &convention)
 {
 	std::string s;
 
@@ -68,7 +68,7 @@ std::string Parser::parsingString(const std::string type, const std::string conv
 	return s;
 }
 
-std::vector<std::string> Parser::parsingStoVector(const std::string type, const std::string convention)
+std::vector<std::string> Parser::parsingStoVector(const std::string &type, const std::string &convention)
 {
 	std::cout << "Give me your "<< type << ", please use "<< convention << std::endl;
 	std::cout << "Separate them by a white space" << std::endl << ">";
@@ -100,8 +100,9 @@ bool Parser::parsingBoolean(std::string s)
 	return false;
 }
 
-void Parser::parsingProceed(const std::vector<std::string> v)
+void Parser::parsingProceed(const std::vector<std::string> &v)
 {
+	(void)v;
 	_project_name = Parser::parsingString("project name", "PascalCase");
 	_main = Parser::parsingBoolean("main file (main.cpp)");
 	if (Parser::parsingBoolean("subfiles")) {

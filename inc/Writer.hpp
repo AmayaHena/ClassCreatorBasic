@@ -22,32 +22,32 @@ class Writer {
 		~Writer() = default;
 
 		/* Create file and write in Public */
-		bool create(const std::string name, const std::string path, const std::string type);
+		bool create(const std::string &name, const std::string &path, const std::string type);
 
 		/* Setter */
 		void setHeader(const std::vector<std::string> v);
-		void setFile(const std::vector<std::string> v);
-		void setSrc(const std::vector<std::string> v);
-		void setInc(const std::vector<std::string> v);
-		void setInheritance(const std::string s);
-		void setInclude(const std::string s);
+		void setFile(const std::vector<std::string> &v);
+		void setSrc(const std::vector<std::string> &v);
+		void setInc(const std::vector<std::string> &v);
+		void setInheritance(const std::string &s);
+		void setInclude(const std::string &s);
 
 	private:
 
 		/* Create file and write in Private */
-		void useTag(const std::string tag, const std::string name, const std::string path, const std::string type);
-		void processTag(const std::string s, const std::string name, const std::string path, const std::string type);
+		void useTag(const std::string &tag, const std::string &name, const std::string &path, const std::string &type);
+		void processTag(const std::string &s, const std::string &name, const std::string &path, const std::string type);
 
 		/* Tag File By File */
-		void useTagCpp(const std::string tag, const std::string name);
-		void useTagHpp(const std::string tag, const std::string name);
-		void useTagMake(const std::string tag, const std::string path);
+		void useTagCpp(const std::string &tag, const std::string &name);
+		void useTagHpp(const std::string &tag, const std::string &name);
+		void useTagMake(const std::string &tag, const std::string &path);
 
 		/* Tools */
 		void cleanRessources(void);
 		int occurenceNbInS(const std::string &s, const std::string &tag);
-		void writeVectorInFile(const std::string s1, const std::vector<std::string> v, const std::string s2);
-		std::ofstream createFile(const std::string name, const std::string path, const std::string type);
+		void writeVectorInFile(const std::string &s1, const std::vector<std::string> &v, const std::string &s2);
+		std::ofstream createFile(const std::string &name, const std::string &path, const std::string &type);
 
 		/* enum for maps */
 		enum type {HPP, CPP, MAIN, MAKE, CMAKE};

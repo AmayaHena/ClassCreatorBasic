@@ -35,14 +35,14 @@ class File {
 	private:
 
 		/* Generic Tool to load file */
-		std::vector<std::string> loadFile(const std::string path, const bool request);
+		std::vector<std::string> loadFile(const std::string &path, const bool request);
 
 		/* Checks */
-		bool checkDirExist(const std::string s);
-		bool checkFileExist(const std::string s);
+		bool checkDirExist(const std::string &s);
+		bool checkFileExist(const std::string &s);
 
 		/* Load Config private */
-		std::vector<std::string> loadFileToV(const std::string path);
+		std::vector<std::string> loadFileToV(const std::string &path);
 
 		/* Variables - Ressources containers for files*/
 		std::vector<std::string> _fileHpp;

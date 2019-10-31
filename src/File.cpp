@@ -41,7 +41,7 @@ std::vector<std::string> File::getCMake(void)
 	return _cmake;
 }
 
-bool File::checkFileExist(const std::string s)
+bool File::checkFileExist(const std::string &s)
 {
 	struct stat buffer;
 
@@ -52,7 +52,7 @@ bool File::checkFileExist(const std::string s)
 	return true;
 }
 
-bool File::checkDirExist(const std::string s)
+bool File::checkDirExist(const std::string &s)
 {
 	struct stat buffer;
 
@@ -63,7 +63,7 @@ bool File::checkDirExist(const std::string s)
 	return true;
 }
 
-std::vector<std::string> File::loadFileToV(const std::string path)
+std::vector<std::string> File::loadFileToV(const std::string &path)
 {
 	std::vector<std::string> v;
 	std::ifstream f(path);
@@ -75,7 +75,7 @@ std::vector<std::string> File::loadFileToV(const std::string path)
 	return v;
 }
 
-std::vector<std::string> File::loadFile(const std::string path, const bool request)
+std::vector<std::string> File::loadFile(const std::string &path, const bool request)
 {
 	std::vector<std::string> v;
 

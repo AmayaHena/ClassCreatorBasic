@@ -14,7 +14,7 @@
 
 #include "Dir.hpp"
 
-bool Dir::createDir(const std::string path, const std::string name)
+bool Dir::createDir(const std::string &path, const std::string &name)
 {
 	std::string s = path + "/" + name;
 	struct stat buffer;
