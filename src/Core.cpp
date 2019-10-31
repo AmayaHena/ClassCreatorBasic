@@ -27,13 +27,13 @@ bool Core::generateCode()
 		return true;
 
 	std::vector<std::string> subfiles = _p.getSubFiles();
-	for (unsigned int i = 0; i < subfiles.size(); i++) {
-		_s.createHpp(_p, _w, _f.getFileHpp(), subfiles[i]);
-		_s.createCpp(_p, _w, _f.getFileCpp(), subfiles[i]);
+	for (const std::string &file: subfiles) {
+		_s.createHpp(_p, _w, _f.getFileHpp(), file);
+		_s.createCpp(_p, _w, _f.getFileCpp(), file);
 		if (_p.getFolders())
-			Core::fillPath(subfiles[i] + "/" + subfiles[i]);
+			Core::fillPath(file + "/" + file);
 		else
-			Core::fillPath(subfiles[i]);
+			Core::fillPath(file);
 	}
 	return true;
 }

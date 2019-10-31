@@ -99,8 +99,8 @@ int Writer::occurenceNbInS(const std::string &s, const std::string &tag)
 
 void Writer::writeVectorInFile(const std::string &s1, const std::vector<std::string> &v, const std::string &s2)
 {
-	for (unsigned int i = 0; i < v.size(); i++)
-		_of << s1 << v[i] << s2 << std::endl;
+	for (const std::string &s: v)
+		_of << s1 << s << s2 << std::endl;
 }
 
 std::ofstream Writer::createFile(const std::string &name, const std::string &path, const std::string &type)
@@ -244,11 +244,11 @@ bool Writer::create(const std::string &name, const std::string &path, const std:
 {
 	_of = Writer::createFile(name, path, type);
 
-	for (unsigned int i = 0; i < _file.size(); i++) {
-		if (Writer::occurenceNbInS(_file[i], _tag_ref) > 0)
-			Writer::processTag(_file[i], name, path, type);
+	for (const std::string &s: _file) {
+		if (Writer::occurenceNbInS(s, _tag_ref) > 0)
+			Writer::processTag(s, name, path, type);
 		else
-			_of << _file[i] << std::endl;
+			_of << s << std::endl;
 	}
 	Writer::cleanRessources();
 	return true;
